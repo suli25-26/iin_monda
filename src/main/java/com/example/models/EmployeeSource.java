@@ -62,12 +62,33 @@ public class EmployeeSource implements EmployeeAccessible {
         ps.setString(2, emp.getCity());
         ps.setBigDecimal(3, emp.getSalary());
         ps.execute();
+        conn.close();
     }
 
     @Override
     public void update(Employee emp, int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        try {
+            tryUpdate(emp, id);
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+    }
+    private void tryUpdate(Employee emp, int id) throws SQLException {
+        Connection conn = database.connect();
+        String sql = """
+                update employees set
+                name=?,
+                city=?,
+                salary=?
+                where id=?
+                """;
+        PreparedStatement ps = conn.prepareStatement(sql);
+        ps.setString(1, emp.getName());
+        ps.setString(2, emp.getCity());
+        ps.setBigDecimal(3, emp.getSalary());
+        ps.setInt(4, id);
+        ps.executeUpdate();
+        conn.close();
     }
 
     @Override

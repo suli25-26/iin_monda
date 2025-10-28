@@ -21,6 +21,13 @@ public class Main {
             );
         // es.store(newemp);
 
+        Employee updatedemp = new Employee(
+            "Tan Aranka", 
+            "Hatvan", 
+            new BigDecimal(397.5)
+            );
+        // es.update(updatedemp, 5);
+
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
             System.out.println(emp.getName());
