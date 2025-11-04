@@ -28,9 +28,16 @@ public class Main {
             );
         // es.update(updatedemp, 5);
 
+        es.destroy(6);
+
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
-            System.out.println(emp.getName());
+            System.out.printf(
+                "%d %s %s\n",
+                emp.getId(),
+                emp.getName(),
+                emp.getCity()
+                );
         });
     }
 }
