@@ -28,7 +28,7 @@ public class Main {
             );
         // es.update(updatedemp, 5);
 
-        es.destroy(6);
+        // es.destroy(6);
 
         ArrayList<Employee> empList = es.index();
         empList.forEach((emp) -> {
